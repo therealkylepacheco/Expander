@@ -47,4 +47,12 @@ public class PlayerController : MonoBehaviour
             transform.Translate(contractVector * Time.deltaTime * speed);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            // Stop the game
+        }
+    }
 }
