@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public float spawnRate = 5f;
     public GameObject block;
+    public GameObject player;
+    public GameObject titleScreen;
+    public GameObject howToScreen;
+    public GameObject gameOverScreen;
     public bool isGameActive = true;
 
     private float gapWidth = 3f;
@@ -18,14 +22,36 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreText.text = $"{score}";
-        StartCoroutine(SpawnWall());
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void ShowHowToScreen()
+    {
+        titleScreen.SetActive(false);
+        howToScreen.SetActive(true);
+    }
+    public void BackToTitle()
+    {
+        titleScreen.SetActive(true);
+        howToScreen.SetActive(false);
+    }
+
+    public void StartGame()
+    {
+        scoreText.text = $"{score}";
+        titleScreen.SetActive(false);
+        player.SetActive(true);
+        StartCoroutine(SpawnWall());
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void UpdateScore()
@@ -61,7 +87,6 @@ public class GameManager : MonoBehaviour
     void GenerateWall()
     {
         CalculateGapWidth();
-        Debug.Log(gapWidth);
         Quaternion rotation = block.transform.rotation;
 
         // Creating 3 pieces to each wall
@@ -90,7 +115,7 @@ public class GameManager : MonoBehaviour
 
     public void StopGame()
     {
-        Debug.Log("GAME OVER");
+        gameOverScreen.SetActive(true);
         isGameActive = false;
         StopCoroutine(SpawnWall());
     }
