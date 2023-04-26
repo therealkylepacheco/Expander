@@ -63,36 +63,20 @@ public class GameManager : MonoBehaviour
         BoxCollider middleBoxCollider = middleWall.GetComponent<BoxCollider>();
 
 
-        // calculating left wall transform (side wall transform?)
+        // calculating right edge of middleWall
         float middleRightEdgeX = (middleWall.transform.localScale.x / 2) + middleWall.transform.position.x;
-        // float sideScalar = Mathf.Abs((rightWall.transform.position.x - middleRightEdgeX + 1.25f) * 2);
-
+        // calculating side scalar value
         float sideScalar = ((rightWall.transform.position.x - middleRightEdgeX) * 2) - (gapWidth * 2);
-
-
-        Debug.Log($"middleWallScale: {middleWallScale}");
-        Debug.Log($"middleLeftEdgeX: {middleRightEdgeX}");
-        Debug.Log($"sideScale: {sideScalar}");
-
+        // applying scalar to both walls
         rightWall.transform.localScale = new Vector3(sideScalar, rightWall.transform.localScale.y, rightWall.transform.localScale.z);
-
         leftWall.transform.localScale = new Vector3(sideScalar, leftWall.transform.localScale.y, leftWall.transform.localScale.z);
+    }
 
-
-
-
-        /*
-        Need to create three things here
-        1.) left wall
-        2.) right wall (mirror of left)
-        3.) middle
-
-        * Need to make is to that it's always possible for ball to pass inbetween
-        * 1.25 clearance on either side
-        */
-
-
-        // Instantiate(middleWall);
+    public void StopGame()
+    {
+        Debug.Log("GAME OVER");
+        isGameActive = false;
+        StopCoroutine(SpawnWall());
     }
 
 
