@@ -91,9 +91,8 @@ public class GameManager : MonoBehaviour
     public void StopGame()
     {
         Debug.Log("GAME OVER");
-        // kdp uncomment these
-        // isGameActive = false;
-        // StopCoroutine(SpawnWall());
+        isGameActive = false;
+        StopCoroutine(SpawnWall());
     }
 
 
