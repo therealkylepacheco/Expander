@@ -12,7 +12,6 @@ public class MoveDown : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
     }
 
     // Update is called once per frame

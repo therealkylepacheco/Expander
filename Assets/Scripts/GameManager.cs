@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject block;
     public bool isGameActive = true;
 
-    private float gapWidth = 5f;
+    private float gapWidth = 3f;
     private float minGapWidth = 1.25f;
     private int score = 0;
 
@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
     {
         if (score > 0)
         {
-            int fifthScore = score % 3;
-            if (gapWidth > minGapWidth && fifthScore == 0)
+            int thirdScore = score % 3;
+            if (gapWidth > minGapWidth && thirdScore == 0)
             {
                 gapWidth -= 0.25f;
             }
