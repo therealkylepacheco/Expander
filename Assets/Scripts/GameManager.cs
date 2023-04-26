@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject block;
     public bool isGameActive = true;
 
-    public float gapWidth = 1.25f;
+    public float gapWidth = 1.50f;
     private int score = 0;
 
     // Start is called before the first frame update
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void UpdateScore()
+    public void UpdateScore()
     {
         score++;
         scoreText.text = $"{score}";
@@ -75,8 +75,9 @@ public class GameManager : MonoBehaviour
     public void StopGame()
     {
         Debug.Log("GAME OVER");
-        isGameActive = false;
-        StopCoroutine(SpawnWall());
+        // kdp uncomment these
+        // isGameActive = false;
+        // StopCoroutine(SpawnWall());
     }
 
 

@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private KeyCode moveKey;
     public float upperDomain = 5f;
     public float lowerDomain = 0.75f;
-    public float speed;
+    public float speed; // 2
     public string expandDirection;
 
     // Start is called before the first frame update
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
             float currentX = Mathf.Abs(transform.position.x);
             if (expand && currentX < upperDomain)
             {
-                transform.Translate(expandVector * Time.deltaTime * speed);
+                transform.Translate(expandVector * Time.deltaTime * speed / 2); // kdp messing around with slow expand, fast contract
             }
             else if (currentX > lowerDomain)
             {
