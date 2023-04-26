@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     public GameObject block;
     public bool isGameActive = true;
 
-    public float gapWidth = 1.50f;
+    private float gapWidth = 5f;
+    private float minGapWidth = 1.25f;
     private int score = 0;
 
     // Start is called before the first frame update
@@ -33,6 +34,19 @@ public class GameManager : MonoBehaviour
         scoreText.text = $"{score}";
     }
 
+    // Subtract 0.25 from width every 3 points
+    private void CalculateGapWidth()
+    {
+        if (score > 0)
+        {
+            int fifthScore = score % 3;
+            if (gapWidth > minGapWidth && fifthScore == 0)
+            {
+                gapWidth -= 0.25f;
+            }
+        }
+    }
+
     IEnumerator SpawnWall()
     {
         while (isGameActive)
@@ -46,6 +60,8 @@ public class GameManager : MonoBehaviour
 
     void GenerateWall()
     {
+        CalculateGapWidth();
+        Debug.Log(gapWidth);
         Quaternion rotation = block.transform.rotation;
 
         // Creating 3 pieces to each wall
