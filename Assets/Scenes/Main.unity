@@ -191,7 +191,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 1, b: 0.15032363, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -535,9 +535,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 108955666}
-  spawnRate: 2
+  spawnRate: 5
   block: {fileID: 1291812788565141130, guid: ead64b922719f46719abf3d9722db78a, type: 3}
   isGameActive: 1
+  gapWidth: 1.25
 --- !u!4 &1156827940
 Transform:
   m_ObjectHideFlags: 0
@@ -751,7 +752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 723474431672207341, guid: 3cd551d23a5dc42dcae4bb9c0eeafed3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 723474431672207341, guid: 3cd551d23a5dc42dcae4bb9c0eeafed3, type: 3}
       propertyPath: m_LocalPosition.y
